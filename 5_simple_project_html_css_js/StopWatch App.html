@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>StopWatch App</title>
+<style>
+  .start{
+    background-color: rgb(64, 64, 196);
+    color: white;
+    border: none;
+    width: 65px;
+    height: 30px;
+    border-radius: 40px;
+    font-size: 12px;
+    font-family: Arial;
+    cursor: pointer;
+  }
+  .stop{
+    background-color: rgb(199, 17, 17);
+    color: white;
+    border: none;
+    width: 65px;
+    height: 30px;
+    border-radius: 40px;
+    font-size: 12px;
+    font-family: Arial;
+    cursor: pointer;
+  }
+  .reset{
+    background-color: rgb(223, 223, 223);
+    color: black;
+    border: none;
+    width: 65px;
+    height: 30px;
+    border-radius: 40px;
+    font-size: 12px;
+    font-family: Arial;
+    cursor: pointer;
+  }
+  .inactive{
+    color: gray;
+    cursor:auto;
+  }
+</style>
+  </head>
+  <body>
+    
+  <div style="display: flex;height: 110px;margin-left: 8px;">
+    <div >
+      <p style="font-size: 50px;" class="Minute2">0</p>
+    </div>
+    <div>
+      <p style="font-size: 50px;" class="Minute">0</p>
+    </div>
+    <p style="font-size: 50px;">:</p>
+    <div>
+    <p style="font-size: 50px;" class="Second2">0</p>
+  </div>
+  <div>
+    <p style="font-size: 50px;" class="Second">0</p>
+  </div>
+</div>
+
+
+<div >
+  <button class="start" onclick="start()">Start</button>
+<button class="reset" onclick="reset()">Reset</button>
+</div>
+
+
+    <script>
+    let id;
+    let c=0;
+
+    let second=0;
+      let second2=0;
+      let minute=0;
+      let minute2=0;
+     function start(){
+      
+      let status=document.querySelector('.start');
+      if(status.innerHTML==='Start'){
+        c=1;
+        status.innerHTML='Stop';
+        status.classList.add('stop');
+        document.querySelector('.reset').classList.add('inactive');
+      }
+      else if(status.innerHTML==='Stop'){
+        c=0;
+        status.innerHTML='Start';
+        status.classList.remove('stop');
+        document.querySelector('.reset').classList.remove('inactive');
+        clearInterval(id);
+      }
+
+     
+  if(c==1){
+       id=setInterval(function(){
+       second++;
+       document.querySelector('.Second').innerHTML=second;
+       if(second===10){
+        document.querySelector('.Second').innerHTML=0;
+        second=0;
+        second2++;
+        document.querySelector('.Second2').innerHTML=second2;
+       }
+       if(second2===6 && second===0){
+        document.querySelector('.Second').innerHTML=0;
+        document.querySelector('.Second2').innerHTML=0;
+        second=0;
+        second2=0;
+        minute++;
+        document.querySelector('.Minute').innerHTML=minute;
+       }
+       if(minute===10){
+        document.querySelector('.Second').innerHTML=0;
+        document.querySelector('.Second2').innerHTML=0;
+        document.querySelector('.Minute').innerHTML=0;
+        second=0;
+        second2=0;
+        minute=0;
+        minute2++;
+        document.querySelector('.Minute').innerHTML=minute2;
+       }
+      },1000)
+   }
+}
+
+function reset(){
+  if(document.querySelector('.start').innerHTML==='Start'){
+        second=0;
+        second2=0;
+        minute=0;
+        minute2=0;
+        document.querySelector('.Second').innerHTML=0;
+        document.querySelector('.Second2').innerHTML=0;
+        document.querySelector('.Minute').innerHTML=0;
+        document.querySelector('.Minute2').innerHTML=0;
+  }
+}
+      
+    </script>
+  </body>
+</html>

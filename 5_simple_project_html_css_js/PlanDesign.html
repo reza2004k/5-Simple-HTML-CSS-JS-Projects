@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <title>To do list</title>
+  </head>
+  <body>
+    <p>Todo List</p>
+    <input style="height: 24px;" class="input" placeholder="Todo name" onkeydown=" if(event.key==='Enter'){addTodo();}">
+    <input style="height: 24px;vertical-align: top;" class="dodate" onkeydown="
+    if(document.querySelector('.input').value!==''){
+      if(event.key==='Enter'){
+      addTodo();
+    }
+    }
+    " type="date">
+    <button style="cursor: pointer;background-color: rgb(14, 157, 14);color: white;border: none;width: 90px;height: 30px;vertical-align: top;" onclick="
+    JSON.parse(localStorage.getItem('list'));
+
+    addTodo();" >Add</button>
+    <div class="js-div"></div>
+
+    <div style="padding-top: 10px;" ></div>
+    <script>
+      const todoList=[
+        {Name:'', Date:''},
+      ];
+
+      function addTodo(){
+        const inputElement=document.querySelector('.input');
+        const name=inputElement.value;
+        const dateElement=document.querySelector('.dodate');
+        const date=dateElement.value;
+        todoList.push({Name:name,Date:date});
+        inputElement.value='';
+        dateElement.value='';
+        
+        addToBackground();
+
+      }
+
+      function addToBackground(){
+        let result='';
+       
+        for(let i=0;i<todoList.length;i++){
+          const todoObject=todoList[i];
+          const name=todoObject.Name;
+          const date=todoObject.Date;
+          if(name!==''&&date!==''){
+            result+=`<div style="display: block;" ><div style="display: flex;margin-top: 10px;" ><div style="width: 160px;padding-top: 8px;"<p>${name}</div><div style="width: 118px;padding-left: 10px;padding-top: 8px;" >${date}</div><div><button  style="cursor: pointer;background-color: rgb(157, 14, 14);color: white;border: none;width: 90px;height: 30px;margin-left:5px" onclick="Delete(${i});">Delete</button></p></div></div>`;
+          }
+          }
+        document.querySelector('.js-div').innerHTML=result;
+        localStorage.setItem('list',JSON.stringify(todoList));
+        }
+
+       function Delete(i){
+          todoList.splice(i,1);
+          addToBackground();
+       }
+    </script>
+  </body>
+</html>

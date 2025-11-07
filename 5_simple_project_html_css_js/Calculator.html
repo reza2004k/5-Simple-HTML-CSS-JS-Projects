@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .number{
+        background-color: rgb(48, 48, 48);
+        color: white;
+        border: none;
+        width: 30px;
+        height: 30px;
+        border-radius: 20px;
+        margin-bottom: 10px;
+        cursor: pointer;
+       
+      }
+      .right-button{
+        background-color:  rgb(254, 160, 10);
+        color: white;
+        border: none;
+        width: 30px;
+        height: 30px;
+        border-radius: 20px;
+        cursor: pointer;
+      }
+      .result{
+        margin-bottom: 10px;
+      }
+    </style>
+    
+  </head>
+  <body style="background-color: black;">
+
+    <div style="vertical-align: top;height: 40px;">
+      <p style="color: white;font-size: 30px;vertical-align: top;margin-top: 0;" class="result"></p>
+    </div>
+    
+<div style=" height: 190px;" >
+
+  <div style="display: flex;">
+    <div>
+      <button style="background-color: rgb(48, 48, 48);
+      color: white;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      cursor: pointer;" class="Rabinhood" onclick="
+        LIGHT();
+        ">OFF</button>
+    </div>
+    
+   <div>
+    <button style="font-size: 10px;margin-left: 5px;" class="number" onclick="Calculator=''
+    document.querySelector('.result').innerHTML='';
+    ;">Clear</button>
+   </div>
+  </div>
+
+  <div>
+    <button class="number" onclick="
+      Calculate('1');"
+      ">1</button>
+
+    <button class="number" onclick="
+    Calculate('2');
+    ">2</button>
+
+    <button class="number"onclick="
+    Calculate('3');
+    ">3</button>
+
+    <button class="right-button"onclick="
+    Calculate('+');
+    ">+</button>
+    </div>
+    
+    <div>
+      <button class="number" onclick="
+      Calculate('4');
+      ">4</button>
+
+      <button class="number" onclick="
+      Calculate('5');
+      ">5</button>
+
+      <button class="number" onclick="
+      Calculate('6');
+      ">6</button>
+
+      <button  class="right-button" onclick="
+      Calculate('-');
+      ">-</button>
+    </div>
+    
+    <div>
+      <button class="number" onclick="
+      Calculate('7');
+      ">7</button>
+
+        <button class="number" onclick="
+        Calculate('8');
+        ">8</button>
+
+        <button class="number" onclick="
+        Calculate('9');
+        ">9</button>
+
+        <button  class="right-button" onclick="
+        Calculate('*');
+        ">*</button>
+    </div>
+    
+    <div>
+      <button class="number" onclick="
+      Calculate('0');
+      ">0</button>
+
+        <button class="number" onclick="
+        Calculate('.');
+        ">.</button>
+
+        <button class="number" onclick="
+        Calculator =eval(Calculator);
+        if(Calculator===undefined){
+          document.querySelector('.result').innerHTML='';
+        }
+        else{
+          document.querySelector('.result').innerHTML=Calculator;
+        }
+        ">=</button>
+
+        <button  class="right-button" onclick="
+        Calculate('/');
+        ">/</button>
+    </div>
+  </div>
+</div>
+    
+
+
+    <script>
+let light='OFF';
+let resultLight=document.querySelector('.Rabinhood');
+
+     let Calculator='';
+     let finish='';
+      function Calculate(button){
+      finish= Calculator+=button;
+      document.querySelector('.result').innerHTML=finish;
+      }
+
+      function LIGHT(){
+        if(light==='OFF'){
+          resultLight.innerHTML='ON';
+          light="ON";
+
+        }
+        else{
+          resultLight.innerHTML='OFF';
+          light='OFF';
+        }
+      }
+
+    </script>
+  </body>
+</html>

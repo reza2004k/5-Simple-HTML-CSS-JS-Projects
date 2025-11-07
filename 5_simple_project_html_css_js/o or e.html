@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<htmkl>
+  <head>
+    <title>Odd & Even</title>
+  </head>
+  <style>
+    .check{
+      background-color: rgb(34, 170, 34);
+      color: white;
+      border: none;
+      cursor: pointer;
+      height: 40px;
+      border-radius: 20px;
+    }
+    .load{
+      background-color: rgb(255, 255, 255);
+      color: black;
+      cursor:auto;
+      font-size: 16px;
+      font-family: Arial;
+    }
+    .check:hover{
+      opacity: 0.7;
+    }
+    .load:hover{
+      opacity: 1;
+    }
+    .blueResult{
+      color: blue;
+    }
+    .redResult{
+      color: red;
+    }
+  </style>
+  <body>
+    <p style="margin-bottom: 2px;">Please insert your number:</p>
+    <input type="text" placeholder="YourNumber" class="number" onkeydown="
+    if(event.key==='Enter'){
+      check();
+      button();
+    }
+    ">
+    <button class="check" onclick="check(),button()">Check</button>
+
+      <p style="font-weight: bold;font-family: Arial;margin-top: 5px;" class="result"></p>
+   
+
+
+
+
+    <script>
+      
+      function check(){
+        let n=document.querySelector('.number').value;
+        let colorop=document.querySelector('.result');
+        setTimeout(function(){
+
+          if(n===''){
+          colorop.innerHTML=':)';
+            setTimeout(function(){
+            document.querySelector('.result').innerHTML='';
+            document.querySelector('.number').value='';
+          },1000)
+        }
+         
+          else if(n%2===0){
+            colorop.classList.add('blueResult');
+            colorop.innerHTML='Even';
+          
+          setTimeout(function(){
+            document.querySelector('.result').innerHTML='';
+            document.querySelector('.number').value='';
+            colorop.classList.remove('blueResult');
+          },1000)
+        }else if(n%2===1){
+          colorop.classList.add('redResult');
+          colorop.innerHTML='Odd';
+          setTimeout(function(){
+            document.querySelector('.result').innerHTML='';
+            document.querySelector('.number').value='';
+            colorop.classList.remove('redResult');
+          },1000)
+        }
+       
+        else{
+            document.querySelector('.result').innerHTML=':)';
+            setTimeout(function(){
+            document.querySelector('.result').innerHTML='';
+            document.querySelector('.number').value='';
+          },1000)
+          }
+        },1000)
+      }
+
+      function button(){
+        let b=document.querySelector('.check');
+        
+        if(b.innerHTML==='Check'){
+          b.innerHTML='Loading...';
+          b.classList.add('load');
+        }
+        setTimeout(function(){
+          b.innerHTML='Check';
+          b.classList.remove('load')
+        },1000)
+      }
+    </script>
+  </body>
+</htmkl>
