@@ -1,7 +1,7 @@
 # 🚀 5 Simple HTML, CSS, and JS Projects
 
 This repository contains a collection of five simple, practical front-end projects designed for learning and showcasing basic web development skills using **HTML5**, **CSS3**, and **Vanilla JavaScript**.
-/
+
 ## 📁 Project Breakdown
 
 The projects included in this collection are:
